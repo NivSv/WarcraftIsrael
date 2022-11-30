@@ -6,6 +6,9 @@ import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios'
 import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
+import {ThrottlerModule} from "@nestjs/throttler"
+import { User } from './users/user.entity';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -17,13 +20,17 @@ import { UsersModule } from './users/users.module';
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [],
+      entities: [User],
       synchronize: true,
     }),
+    ThrottlerModule.forRoot({
+      ttl: 60,
+      limit: 10,
+    }),
     HttpModule,
-    UsersModule
+    UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UsersService],
+  providers: [AppService],
 })
 export class AppModule { }
