@@ -9,6 +9,8 @@ import { UsersModule } from './users/users.module';
 import {ThrottlerModule} from "@nestjs/throttler"
 import { User } from './users/user.entity';
 import { DataSource } from 'typeorm';
+import { AuthController } from './auth/auth.controller';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -29,8 +31,9 @@ import { DataSource } from 'typeorm';
     }),
     HttpModule,
     UsersModule,
+    AuthModule
   ],
-  controllers: [AppController],
+  controllers: [AppController,AuthController],
   providers: [AppService],
 })
 export class AppModule { }
