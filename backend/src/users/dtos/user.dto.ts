@@ -9,6 +9,4 @@ export class UserDto {
     fistName: string;
     @ApiProperty()
     lastName: string;
-    @ApiProperty()
-    active: boolean;
 }
