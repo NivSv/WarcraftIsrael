@@ -4,13 +4,12 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios'
-import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import {ThrottlerModule} from "@nestjs/throttler"
 import { User } from './users/user.entity';
 import { DataSource } from 'typeorm';
-import { AuthController } from './auth/auth.controller';
 import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
