@@ -11,11 +11,20 @@ export class UsersService {
         private usersRepository: Repository<User>,
     ) { }
 
+    async findAll(): Promise<Array<User>> {
+        return this.usersRepository.find();
+    }
+
     async findOne(username: string): Promise<User | undefined> {
         return this.usersRepository.findOneBy({ username });
     }
 
-    async create(username: string, password: string): Promise<User | undefined> {
+    async userLogedIn(user: User) {
+        user.lastLogin = new Date();
+        this.usersRepository.save(user);
+    }
+
+    async create(username: string, password: string): Promise<User> {
         //generate a hash
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
@@ -23,7 +32,27 @@ export class UsersService {
         const user = new User()
         user.username = username;
         user.password = hash;
-        this.usersRepository.manager.save(user);
+        await this.usersRepository.manager.save(user);
+        return user;
+    }
+
+    async delete(user:User){
+        await this.usersRepository.delete(user);
+    }
+
+    async updateRefreshToken(user:User,refreshToken:string){
+        //generate a hash
+        const salt = await bcrypt.genSalt();
+        const hash = await bcrypt.hash(refreshToken, salt);
+        //save token
+        user.currentHashedRefreshToken = hash;
+        await this.usersRepository.save(user);
+    }
+
+    async updateInfo(user:User,firstName:string,lastName:string):Promise<User>{
+        user.firstName = firstName;
+        lastName = lastName;
+        this.usersRepository.save(user);
         return user;
     }
 }

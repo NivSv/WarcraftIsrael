@@ -13,6 +13,7 @@ export class AuthController {
     @Post('login')
     async login(@Req() req, @Res() res: Response) {
         const userDto = await UsersMapper.entityToDto(req.user);
+        this.authService.markAsLogin(req.user,);
         const jwt = await this.authService.login(userDto);
         res.cookie('jwt', jwt, {
             httpOnly: true,

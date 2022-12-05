@@ -1,4 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { UserRoles } from './userRoles.enum';
 
 @Entity()
 export class User {
@@ -16,6 +17,18 @@ export class User {
 
   @Column()
   password: string;
+
+  @Column({default:UserRoles.User})
+  role: UserRoles;
+
+  @Column({ nullable: true })
+  currentHashedRefreshToken:string;
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  lastLogin: Date;
+  
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  created: Date;
 
   @Column({ default: true })
   isActive: boolean;
