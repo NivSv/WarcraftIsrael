@@ -4,10 +4,10 @@ import { User } from "./user.entity";
 export class UsersMapper {
   public static async entityToDto(entity: User): Promise<UserDto> {
     const dto: UserDto = ({
-      id:entity.id,
-      username:entity.username,
-      fistName:entity.firstName,
-      lastName:entity.lastName,
+      id: entity.id,
+      username: entity.username,
+      fistName: entity.firstName,
+      lastName: entity.lastName,
     });
 
     return dto;

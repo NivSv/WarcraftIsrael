@@ -14,8 +14,9 @@ export class AuthController {
     async login(@Req() req, @Res() res: Response) {
         const userDto = await UsersMapper.entityToDto(req.user);
         this.authService.markAsLogin(req.user,);
-        const jwt = await this.authService.login(userDto);
-        res.cookie('jwt', jwt, {
+        const loginTokens = await this.authService.login(userDto, req.user);
+        res.header('Authorization', `Bearer ${loginTokens.accessToken}`);
+        res.cookie('jwt', loginTokens.refreshToken, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'strict',

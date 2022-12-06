@@ -7,13 +7,11 @@ import { HttpModule } from '@nestjs/axios'
 import { UsersModule } from './users/users.module';
 import {ThrottlerModule} from "@nestjs/throttler"
 import { User } from './users/user.entity';
-import { DataSource } from 'typeorm';
 import { AuthModule } from './auth/auth.module';
-import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,

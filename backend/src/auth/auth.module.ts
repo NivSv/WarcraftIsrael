@@ -6,17 +6,17 @@ import { LocalStrategy } from './strategies/local.strategy';
 import { AuthController } from './auth.controller';
 import { JwtModule } from '@nestjs/jwt';
 import { accessTokenExpiryTime } from './jwt.constants';
+import { JwtStrategy } from './strategies/jwt.strategy';
 
 @Module({
   imports: [
     UsersModule,
     PassportModule,
-    JwtModule.register({
-      secret: process.env.JWT_SECRETJ,
-      signOptions: { expiresIn: accessTokenExpiryTime },
+    JwtModule.registerAsync({
+      useFactory: () => { return { secret: process.env.JWT_SECRET, signOptions: { expiresIn: accessTokenExpiryTime } } },
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy],
+  providers: [AuthService, LocalStrategy,JwtStrategy],
 })
 export class AuthModule { }

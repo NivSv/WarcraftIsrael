@@ -18,16 +18,16 @@ export class User {
   @Column()
   password: string;
 
-  @Column({default:UserRoles.User})
+  @Column({ default: UserRoles.User })
   role: UserRoles;
 
   @Column({ nullable: true })
-  currentHashedRefreshToken:string;
+  currentHashedRefreshToken: string;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   lastLogin: Date;
-  
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP'})
+
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   created: Date;
 
   @Column({ default: true })

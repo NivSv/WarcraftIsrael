@@ -36,20 +36,27 @@ export class UsersService {
         return user;
     }
 
-    async delete(user:User){
+    async delete(user: User) {
         await this.usersRepository.delete(user);
     }
 
-    async updateRefreshToken(user:User,refreshToken:string){
+    async updateRefreshToken(user: User, refreshToken: string) {
         //generate a hash
-        const salt = await bcrypt.genSalt();
-        const hash = await bcrypt.hash(refreshToken, salt);
+        const salt:string = await bcrypt.genSalt();
+        const hash:string = await bcrypt.hash(refreshToken, salt);
         //save token
         user.currentHashedRefreshToken = hash;
         await this.usersRepository.save(user);
     }
 
-    async updateInfo(user:User,firstName:string,lastName:string):Promise<User>{
+    async validRefreshToken(user: User,refreshToken:string):Promise<boolean> {
+        let isValid:boolean;
+        //compare the token
+        isValid = await bcrypt.compare(refreshToken,user.currentHashedRefreshToken);
+        return isValid;
+    }
+
+    async updateInfo(user: User, firstName: string, lastName: string): Promise<User> {
         user.firstName = firstName;
         lastName = lastName;
         this.usersRepository.save(user);
