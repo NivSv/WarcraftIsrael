@@ -5,13 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { HttpModule } from '@nestjs/axios'
 import { UsersModule } from './users/users.module';
-import {ThrottlerModule} from "@nestjs/throttler"
+import { ThrottlerModule } from "@nestjs/throttler"
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { ScheduleModule } from '@nestjs/schedule';
+import { WarcraftDataIntervalService } from './warcraft-data-interval/warcraft-data-interval.service';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal:true}),
+    ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: process.env.DATABASE_HOST,
@@ -26,11 +28,12 @@ import { AuthModule } from './auth/auth.module';
       ttl: 60,
       limit: 10,
     }),
+    ScheduleModule.forRoot(),
     HttpModule,
     UsersModule,
     AuthModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, WarcraftDataIntervalService],
 })
 export class AppModule { }
