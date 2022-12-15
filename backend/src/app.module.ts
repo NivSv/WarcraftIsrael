@@ -9,7 +9,9 @@ import { ThrottlerModule } from "@nestjs/throttler"
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { WarcraftDataIntervalService } from './warcraft-data-interval/warcraft-data-interval.service';
+import { WowInitialiseDataModule } from './wow-initialise-data/wow-initialise-data.module';
+import { WowCharacter } from './wow-characters/wow-characters.entity';
+import { WowCharactersModule } from './wow-characters/wow-characters.module';
 
 @Module({
   imports: [
@@ -21,7 +23,7 @@ import { WarcraftDataIntervalService } from './warcraft-data-interval/warcraft-d
       username: process.env.DATABASE_USER,
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
-      entities: [User],
+      entities: [User,WowCharacter],
       synchronize: true,
     }),
     ThrottlerModule.forRoot({
@@ -31,9 +33,11 @@ import { WarcraftDataIntervalService } from './warcraft-data-interval/warcraft-d
     ScheduleModule.forRoot(),
     HttpModule,
     UsersModule,
-    AuthModule
+    AuthModule,
+    WowCharactersModule,
+    WowInitialiseDataModule
   ],
   controllers: [AppController],
-  providers: [AppService, WarcraftDataIntervalService],
+  providers: [AppService],
 })
 export class AppModule { }

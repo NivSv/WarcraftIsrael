@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { WowCharacter } from '../wow-characters/wow-characters.entity';
 import { UserRoles } from './userRoles.enum';
 
 @Entity()
@@ -23,6 +24,9 @@ export class User {
 
   @Column({ nullable: true })
   currentHashedRefreshToken: string;
+
+  @OneToMany(() => WowCharacter, wowCharacter => wowCharacter.user)
+  wowCharacters: WowCharacter[];
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   lastLogin: Date;
