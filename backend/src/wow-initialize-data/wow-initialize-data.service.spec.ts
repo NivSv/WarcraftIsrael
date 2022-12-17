@@ -1,15 +1,15 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { WowInitialiseDataService } from './wow-initialise-data.service';
+import { WowInitializeDataService } from './wow-initialize-data.service';
 
 describe('WowInitialiseDataService', () => {
-  let service: WowInitialiseDataService;
+  let service: WowInitializeDataService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [WowInitialiseDataService],
+      providers: [WowInitializeDataService],
     }).compile();
 
-    service = module.get<WowInitialiseDataService>(WowInitialiseDataService);
+    service = module.get<WowInitializeDataService>(WowInitializeDataService);
   });
 
   it('should be defined', () => {

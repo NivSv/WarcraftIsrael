@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                        String         @id @default(auto()) @map("_id") @db.ObjectId
+  username                  String         @unique
+  password                  String
+  firstName                 String?
+  lastName                  String?
+  role                      UserRole       @default(USER)
+  currentHashedRefreshToken String?
+  lastLogin                 DateTime       @default(now())
+  created                   DateTime       @default(now())
+  wowCharacters             WowCharacter[]
+}
+
+enum UserRole {
+  USER
+  GuildLeader
+  ADMIN
+}
+
+model WowCharacter {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  blizardCharacterId Int?
+  realm              String
+  name               String
+  realmSlug          String?
+  guildRank          Int?
+  raceId             Int?
+  level              Int?
+  gender             String?
+  guild              String?
+  achievement_points Int?
+  lastLogin          DateTime?
+  itemLevelEquipped  Int?
+  faction            String?
+  classId            Int?
+  specId             Int?
+  mythicPlusRating   Int?
+  user               User?    @relation(fields: [userId], references: [id])
+  userId             String?
+}

@@ -3,9 +3,9 @@ import { Injectable, Scope } from '@nestjs/common';
 import { WowCharactersService } from '../wow-characters/wow-characters.service';
 
 @Injectable({ scope: Scope.DEFAULT })
-export class WowInitialiseDataService {
+export class WowInitializeDataService {
     constructor(private readonly httpService: HttpService, private readonly wowCharactersService: WowCharactersService) {
-        this.initialiseWowData();
+        this.initializeWowData();
     }
 
     public raceData = {};
@@ -25,7 +25,7 @@ export class WowInitialiseDataService {
             });
     }
 
-    public async initialiseAccessToken() {
+    public async initializeAccessToken() {
         const client = process.env.BLIZZARD_CLIENT_ID;
         const secret = process.env.BLIZZARD_CLIENT_SECRET;
         this.httpService.post("https://oauth.battle.net/token", {
@@ -41,12 +41,15 @@ export class WowInitialiseDataService {
         }).subscribe(async (res) => {
             //this.GetRaceData(res.data.access_token);
             await this.wowCharactersService.updateCharacterData("farkash", "kazzak", res.data.access_token);
-            await this.wowCharactersService.updateCharacterData("nivsvv", "kazzak", res.data.access_token);
-            await this.wowCharactersService.updateCharacterData("asmonshekel", "kazzak", res.data.access_token);
+            // await this.wowCharactersService.updateCharacterData("nivsvv", "kazzak", res.data.access_token);
+            // await this.wowCharactersService.updateCharacterData("asmonshekel", "kazzak", res.data.access_token);
         })
     }
 
-    public async initialiseWowData() {
-        await this.initialiseAccessToken();
+    public async getGuildCharacters() {
+    }
+
+    public async initializeWowData() {
+        await this.initializeAccessToken();
     }
 }

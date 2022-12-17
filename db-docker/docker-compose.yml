@@ -1,12 +1,13 @@
 # Use root/example as user/password credentials
 version: '3.8'
 services:
-  mongo:
+  db:
     container_name: wow_israel_mongo
-    image: mongo
+    image: prismagraphql/mongo-single-replica:4.4.3-bionic
     restart: always
     ports:
       - 27017:27017
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: nivsv123
+      MONGO_INITDB_ROOT_PASSWORD: example
+      INIT_WAIT_SEC: 3

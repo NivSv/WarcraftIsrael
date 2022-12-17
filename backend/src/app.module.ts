@@ -9,7 +9,7 @@ import { ThrottlerModule } from "@nestjs/throttler"
 import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { ScheduleModule } from '@nestjs/schedule';
-import { WowInitialiseDataModule } from './wow-initialise-data/wow-initialise-data.module';
+import { WowInitializeDataModule as WowInitializeDataModule } from './wow-initialize-data/wow-initialize-data.module';
 import { WowCharacter } from './wow-characters/wow-characters.entity';
 import { WowCharactersModule } from './wow-characters/wow-characters.module';
 
@@ -35,7 +35,7 @@ import { WowCharactersModule } from './wow-characters/wow-characters.module';
     UsersModule,
     AuthModule,
     WowCharactersModule,
-    WowInitialiseDataModule
+    WowInitializeDataModule
   ],
   controllers: [AppController],
   providers: [AppService],

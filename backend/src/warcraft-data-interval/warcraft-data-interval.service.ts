@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Cron, CronExpression } from '@nestjs/schedule';
-import { WowInitialiseDataService } from '../wow-initialise-data/wow-initialise-data.service';
+import { WowInitializeDataService } from '../wow-initialize-data/wow-initialize-data.service';
 
 @Injectable()
 export class WarcraftDataIntervalService {

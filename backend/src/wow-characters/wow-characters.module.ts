@@ -1,15 +1,13 @@
 import { HttpModule } from '@nestjs/axios';
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { WowCharacter } from './wow-characters.entity';
+import { PrismaService } from '../prisma.service';
 import { WowCharactersService } from './wow-characters.service';
 
 @Module({
   imports: [
     HttpModule,
-    TypeOrmModule.forFeature([WowCharacter]),
   ],
   controllers: [],
-  providers: [WowCharactersService],
+  providers: [WowCharactersService,PrismaService],
 })
 export class WowCharactersModule { }
