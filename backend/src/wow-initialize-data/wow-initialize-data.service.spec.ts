@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { WowInitializeDataService } from './wow-initialize-data.service';
 
-describe('WowInitialiseDataService', () => {
+describe('WowInitializeDataService', () => {
   let service: WowInitializeDataService;
 
   beforeEach(async () => {

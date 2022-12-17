@@ -1,6 +1,9 @@
 {
     "cSpell.words": [
         "blizard",
-        "nestjs"
+        "compodoc",
+        "dtos",
+        "nestjs",
+        "websockets"
     ]
 }

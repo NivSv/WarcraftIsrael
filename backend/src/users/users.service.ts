@@ -17,7 +17,7 @@ export class UsersService {
         return this.prisma.user.findFirst({where: {username}});
     }
 
-    async userLogedIn(user: User) {
+    async userLoggedIn(user: User) {
         return this.prisma.user.update({where: {username: user.username}, data: {lastLogin: new Date()}});
     }
 

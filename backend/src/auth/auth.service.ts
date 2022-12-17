@@ -41,6 +41,6 @@ export class AuthService {
   }
 
   async markAsLogin(user: User) {
-    this.usersService.userLogedIn(user);
+    this.usersService.userLoggedIn(user);
   }
 }

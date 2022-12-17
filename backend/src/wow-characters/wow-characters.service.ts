@@ -10,7 +10,7 @@ export class WowCharactersService {
         private readonly httpService: HttpService
     ) { }
 
-    public async updateCharacterData(characterName: string, realm: string, blizAccessToken: string) {
+    public async updateCharacterData(characterName: string, realm: string, blizardAccessToken: string) {
         let wowCharacter = await this.prisma.wowCharacter.findFirst({ where: { name: characterName, realm: realm } });
         if (wowCharacter == null) {
             wowCharacter = await this.prisma.wowCharacter.create({ data: { name: characterName, realm: realm } });
@@ -20,7 +20,7 @@ export class WowCharactersService {
                 params: {
                     namespace: "profile-eu",
                     locale: "en_EU",
-                    access_token: blizAccessToken
+                    access_token: blizardAccessToken
                 }
             }).subscribe((res) => {
                 this.prisma.wowCharacter.update({
@@ -42,17 +42,17 @@ export class WowCharactersService {
                 }).catch((err) => {
                     console.log(err);
                 });
-                // this.updateMythicPlusRating(wowCharacter, blizAccessToken);
+                // this.updateMythicPlusRating(wowCharacter, blizardAccessToken);
             });
     }
 
-    // private async updateMythicPlusRating(wowCharacter: WowCharacter, blizAccessToken: string) {
+    // private async updateMythicPlusRating(wowCharacter: WowCharacter, blizardAccessToken: string) {
     //     this.httpService.get(`https://eu.api.blizzard.com/profile/wow/character/${wowCharacter.realm}/${wowCharacter.name}/mythic-keystone-profile`,
     //         {
     //             params: {
     //                 namespace: "profile-eu",
     //                 locale: "en_EU",
-    //                 access_token: blizAccessToken
+    //                 access_token: blizardAccessToken
     //             }
     //         }).subscribe((res) => {
     //             wowCharacter.mythicPlusRating = res.data.current_mythic_rating.rating;
