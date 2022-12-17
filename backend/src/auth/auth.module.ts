@@ -7,18 +7,16 @@ import { JwtModule } from '@nestjs/jwt';
 import { accessTokenExpiryTime } from './jwt.constants';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { UsersService } from '../users/users.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from '../users/user.entity';
+import { PrismaService } from '../prisma.service';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
     PassportModule,
     JwtModule.registerAsync({
       useFactory: () => { return { secret: process.env.JWT_SECRET, signOptions: { expiresIn: accessTokenExpiryTime } } },
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy,JwtStrategy,UsersService],
+  providers: [AuthService, LocalStrategy,JwtStrategy,UsersService,PrismaService],
 })
 export class AuthModule { }

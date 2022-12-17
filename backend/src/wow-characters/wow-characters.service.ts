@@ -6,8 +6,8 @@ import { WowCharacter, Prisma } from '@prisma/client';
 @Injectable()
 export class WowCharactersService {
     constructor(
-        private prisma: PrismaService,
-        private httpService: HttpService
+        private readonly prisma: PrismaService,
+        private readonly httpService: HttpService
     ) { }
 
     public async updateCharacterData(characterName: string, realm: string, blizAccessToken: string) {

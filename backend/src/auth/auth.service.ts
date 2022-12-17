@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
-import { User } from '../users/user.entity';
 import { UserDto } from '../users/dtos/user.dto';
 import { refreshTokenExpiryTime } from './jwt.constants';
 import { LoginTokens } from './dtos/loginTokens.interface';
+import { User } from "@prisma/client"
 
 @Injectable()
 export class AuthService {

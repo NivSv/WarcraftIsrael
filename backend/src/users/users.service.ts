@@ -1,27 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
+import { PrismaService } from '../prisma.service';
+import { User, Prisma } from '@prisma/client';
 
 @Injectable()
 export class UsersService {
     constructor(
-        @InjectRepository(User)
-        private usersRepository: Repository<User>,
+        private readonly prisma: PrismaService,
     ) { }
 
     async findAll(): Promise<Array<User>> {
-        return this.usersRepository.find();
+        return this.prisma.user.findMany();
     }
 
     async findOne(username: string): Promise<User | undefined> {
-        return this.usersRepository.findOneBy({ username });
+        return this.prisma.user.findFirst({where: {username}});
     }
 
     async userLogedIn(user: User) {
-        user.lastLogin = new Date();
-        this.usersRepository.save(user);
+        return this.prisma.user.update({where: {username: user.username}, data: {lastLogin: new Date()}});
     }
 
     async create(username: string, password: string): Promise<User> {
@@ -29,15 +26,12 @@ export class UsersService {
         const salt = await bcrypt.genSalt();
         const hash = await bcrypt.hash(password, salt);
         //creating the user
-        const user = new User()
-        user.username = username;
-        user.password = hash;
-        await this.usersRepository.manager.save(user);
+        const user = await this.prisma.user.create({data: {username: username, password: hash}});
         return user;
     }
 
     async delete(user: User) {
-        await this.usersRepository.delete(user.id);
+        await this.prisma.user.delete({where: {username: user.username}});
     }
 
     async updateRefreshToken(user: User, refreshToken: string) {
@@ -45,8 +39,7 @@ export class UsersService {
         const salt:string = await bcrypt.genSalt();
         const hash:string = await bcrypt.hash(refreshToken, salt);
         //save token
-        user.currentHashedRefreshToken = hash;
-        await this.usersRepository.save(user);
+        await this.prisma.user.update({where: {username: user.username}, data: {currentHashedRefreshToken: hash}});
     }
 
     async validRefreshToken(user: User,refreshToken:string):Promise<boolean> {
@@ -57,9 +50,7 @@ export class UsersService {
     }
 
     async updateInfo(user: User, firstName: string, lastName: string): Promise<User> {
-        user.firstName = firstName;
-        lastName = lastName;
-        this.usersRepository.save(user);
+        await this.prisma.user.update({where: {username: user.username}, data: {firstName, lastName}});
         return user;
     }
 }

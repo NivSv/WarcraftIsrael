@@ -1,5 +1,5 @@
 import { UserDto } from "./dtos/user.dto";
-import { User } from "./user.entity";
+import { User } from "@prisma/client";
 
 export class UsersMapper {
   public static async entityToDto(entity: User): Promise<UserDto> {
