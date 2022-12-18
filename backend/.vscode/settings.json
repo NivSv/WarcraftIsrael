@@ -6,5 +6,7 @@
     "Kazzak",
     "nestjs",
     "websockets"
-  ]
+  ],
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true
 }

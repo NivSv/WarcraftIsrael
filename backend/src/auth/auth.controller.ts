@@ -7,6 +7,7 @@ import {
   Body,
   HttpException,
   HttpStatus,
+  Inject,
 } from '@nestjs/common';
 import { Response } from 'express';
 import { CreateUserDto } from '../users/dtos/create-user.dto';
@@ -16,7 +17,8 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  @Inject(AuthService) private readonly authService!: AuthService
+  constructor() {}
 
   @UseGuards(LocalAuthGuard)
   @Post('login')

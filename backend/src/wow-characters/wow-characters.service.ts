@@ -6,8 +6,8 @@ import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class WowCharactersService {
-  @Inject(PrismaService) private readonly prisma: PrismaService;
-  @Inject(HttpService) private readonly httpService: HttpService;
+  @Inject(PrismaService) private readonly prisma!: PrismaService;
+  @Inject(HttpService) private readonly httpService!: HttpService;
   constructor() {}
 
   public async updateCharacterData(

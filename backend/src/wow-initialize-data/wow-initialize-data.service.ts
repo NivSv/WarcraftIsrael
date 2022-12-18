@@ -9,9 +9,8 @@ import {
 
 @Injectable({ scope: Scope.DEFAULT })
 export class WowInitializeDataService {
-  @Inject(HttpService) private readonly httpService: HttpService;
-  @Inject(WowCharactersService)
-  private readonly wowCharactersService: WowCharactersService;
+  @Inject(HttpService) private readonly httpService!: HttpService;
+  @Inject(WowCharactersService) private readonly wowCharactersService!: WowCharactersService;
 
   constructor() {
     this.initializeWowData();

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
@@ -9,9 +9,9 @@ import { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
+  @Inject (UsersService) private readonly usersService!: UsersService
+  @Inject (JwtService) private readonly jwtService!: JwtService
   constructor(
-    private usersService: UsersService,
-    private jwtService: JwtService,
   ) {}
 
   async validateUser(username: string, password: string): Promise<User | null> {
