@@ -34,7 +34,6 @@ model WowCharacter {
   blizardCharacterId Int?
   realm              String
   name               String
-  realmSlug          String?
   guildRank          Int?
   raceId             Int?
   level              Int?
@@ -49,4 +48,12 @@ model WowCharacter {
   mythicPlusRating   Int?
   user               User?    @relation(fields: [userId], references: [id])
   userId             String?
+  assets             Assets?
+}
+
+type Assets {
+  avatar String?
+  inset String?
+  main String?
+  mainRaw String?
 }
