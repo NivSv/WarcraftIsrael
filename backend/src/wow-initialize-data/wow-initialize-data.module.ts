@@ -5,10 +5,8 @@ import { WowCharactersService } from '../wow-characters/wow-characters.service';
 import { WowInitializeDataService } from './wow-initialize-data.service';
 
 @Module({
-  imports: [
-    HttpModule,
-  ],
+  imports: [HttpModule],
   controllers: [],
-  providers: [WowInitializeDataService,WowCharactersService,PrismaService],
+  providers: [WowInitializeDataService, WowCharactersService, PrismaService],
 })
-export class WowInitializeDataModule { }
+export class WowInitializeDataModule {}

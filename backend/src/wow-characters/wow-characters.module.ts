@@ -4,10 +4,8 @@ import { PrismaService } from '../prisma.service';
 import { WowCharactersService } from './wow-characters.service';
 
 @Module({
-  imports: [
-    HttpModule,
-  ],
+  imports: [HttpModule],
   controllers: [],
-  providers: [WowCharactersService,PrismaService],
+  providers: [WowCharactersService, PrismaService],
 })
-export class WowCharactersModule { }
+export class WowCharactersModule {}

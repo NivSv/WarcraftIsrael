@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { WarcraftDataIntervalService } from './warcraft-data-interval.service';
 
 @Module({
-  imports: [
-  ],
+  imports: [],
   controllers: [],
   providers: [WarcraftDataIntervalService],
 })
-export class WarcraftDataIntervalModule { }
+export class WarcraftDataIntervalModule {}

@@ -5,11 +5,14 @@ import { UsersService } from '../users/users.service';
 import { UserDto } from '../users/dtos/user.dto';
 import { refreshTokenExpiryTime } from './jwt.constants';
 import { LoginTokens } from './dtos/loginTokens.interface';
-import { User } from "@prisma/client"
+import { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
-  constructor(private usersService: UsersService, private jwtService: JwtService) { }
+  constructor(
+    private usersService: UsersService,
+    private jwtService: JwtService,
+  ) {}
 
   async validateUser(username: string, password: string): Promise<User | null> {
     const user = await this.usersService.findOne(username);
@@ -23,8 +26,10 @@ export class AuthService {
   async login(userDto: UserDto, user: User): Promise<LoginTokens> {
     const { id, ...info } = userDto;
     const payload = { sub: userDto.id, ...info };
-    const accessToken = this.jwtService.sign(payload)
-    const refreshToken = this.jwtService.sign(payload, { expiresIn: refreshTokenExpiryTime });
+    const accessToken = this.jwtService.sign(payload);
+    const refreshToken = this.jwtService.sign(payload, {
+      expiresIn: refreshTokenExpiryTime,
+    });
     this.usersService.updateRefreshToken(user, refreshToken);
     return { accessToken, refreshToken };
   }

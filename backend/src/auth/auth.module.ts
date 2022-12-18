@@ -13,10 +13,21 @@ import { PrismaService } from '../prisma.service';
   imports: [
     PassportModule,
     JwtModule.registerAsync({
-      useFactory: () => { return { secret: process.env.JWT_SECRET, signOptions: { expiresIn: accessTokenExpiryTime } } },
+      useFactory: () => {
+        return {
+          secret: process.env.JWT_SECRET,
+          signOptions: { expiresIn: accessTokenExpiryTime },
+        };
+      },
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy,JwtStrategy,UsersService,PrismaService],
+  providers: [
+    AuthService,
+    LocalStrategy,
+    JwtStrategy,
+    UsersService,
+    PrismaService,
+  ],
 })
-export class AuthModule { }
+export class AuthModule {}

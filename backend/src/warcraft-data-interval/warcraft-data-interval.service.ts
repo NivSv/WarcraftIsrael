@@ -4,9 +4,9 @@ import { WowInitializeDataService } from '../wow-initialize-data/wow-initialize-
 
 @Injectable()
 export class WarcraftDataIntervalService {
-    constructor () {}
-    @Cron(CronExpression.EVERY_10_SECONDS)
-    handleCron() {
-        console.log('Every 30 minutes');
-    }
+  constructor() {}
+  @Cron(CronExpression.EVERY_10_SECONDS)
+  handleCron() {
+    console.log('Every 30 minutes');
+  }
 }

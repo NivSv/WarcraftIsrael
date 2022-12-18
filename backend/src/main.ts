@@ -7,11 +7,11 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   //cors
   const options = {
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     preflightContinue: false,
-    optionsSuccessStatus: 204
+    optionsSuccessStatus: 204,
   };
   app.enableCors(options);
   app.use(cookieParser());
@@ -27,8 +27,8 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   await app.listen(process.env.PORT);
-  console.log("////////////////////////////////");
+  console.log('////////////////////////////////');
   console.log(`server listen on port ${process.env.PORT}`);
-  console.log("////////////////////////////////");
+  console.log('////////////////////////////////');
 }
 bootstrap();
