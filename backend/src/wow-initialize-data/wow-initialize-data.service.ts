@@ -63,8 +63,6 @@ export class WowInitializeDataService {
           );
         });
         //this.GetRaceData(res.data.access_token);
-        // await this.wowCharactersService.updateCharacterData("nivsvv", "kazzak", res.data.access_token);
-        // await this.wowCharactersService.updateCharacterData("asmonshekel", "kazzak", res.data.access_token);
       });
   }
 
