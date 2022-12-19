@@ -1,12 +1,11 @@
 import { Inject, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../prisma.service';
-import { User, Prisma } from '@prisma/client';
+import { User } from '@prisma/client';
 
 @Injectable()
 export class UsersService {
-  @Inject(PrismaService) private readonly prisma!: PrismaService
-  constructor() {}
+  @Inject(PrismaService) private readonly prisma!: PrismaService;
 
   async findAll(): Promise<Array<User>> {
     return this.prisma.user.findMany();
@@ -50,9 +49,8 @@ export class UsersService {
   }
 
   async validRefreshToken(user: User, refreshToken: string): Promise<boolean> {
-    let isValid: boolean;
     //compare the token
-    isValid = await bcrypt.compare(
+    const isValid: boolean = await bcrypt.compare(
       refreshToken,
       user.currentHashedRefreshToken,
     );

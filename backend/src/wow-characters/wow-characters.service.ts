@@ -1,14 +1,13 @@
 import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
-import { WowCharacter, Prisma } from '@prisma/client';
+import { WowCharacter } from '@prisma/client';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable()
 export class WowCharactersService {
   @Inject(PrismaService) private readonly prisma!: PrismaService;
   @Inject(HttpService) private readonly httpService!: HttpService;
-  constructor() {}
 
   public async updateCharacterData(
     characterName: string,

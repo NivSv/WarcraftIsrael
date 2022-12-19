@@ -9,10 +9,8 @@ import { User } from '@prisma/client';
 
 @Injectable()
 export class AuthService {
-  @Inject (UsersService) private readonly usersService!: UsersService
-  @Inject (JwtService) private readonly jwtService!: JwtService
-  constructor(
-  ) {}
+  @Inject(UsersService) private readonly usersService!: UsersService;
+  @Inject(JwtService) private readonly jwtService!: JwtService;
 
   async validateUser(username: string, password: string): Promise<User | null> {
     const user = await this.usersService.findOne(username);
@@ -24,7 +22,11 @@ export class AuthService {
   }
 
   async login(userDto: UserDto, user: User): Promise<LoginTokens> {
-    const { id, ...info } = userDto;
+    const info = (({ username, firstName, lastName }) => ({
+      username,
+      firstName,
+      lastName,
+    }))(userDto);
     const payload = { sub: userDto.id, ...info };
     const accessToken = this.jwtService.sign(payload);
     const refreshToken = this.jwtService.sign(payload, {

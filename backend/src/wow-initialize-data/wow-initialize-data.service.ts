@@ -10,7 +10,8 @@ import {
 @Injectable({ scope: Scope.DEFAULT })
 export class WowInitializeDataService {
   @Inject(HttpService) private readonly httpService!: HttpService;
-  @Inject(WowCharactersService) private readonly wowCharactersService!: WowCharactersService;
+  @Inject(WowCharactersService)
+  private readonly wowCharactersService!: WowCharactersService;
 
   constructor() {
     this.initializeWowData();
@@ -89,7 +90,7 @@ export class WowInitializeDataService {
       .subscribe({
         next: async (res) => {
           const members: Guild_Member[] = res.data.members;
-          for (let member of members) {
+          for (const member of members) {
             if (member.character.level === MAX_LEVEL) {
               await this.wowCharactersService.updateCharacterData(
                 member.character.name.toLowerCase(),

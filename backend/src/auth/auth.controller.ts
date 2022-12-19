@@ -17,8 +17,7 @@ import { LocalAuthGuard } from './guards/local-auth.guard';
 
 @Controller('auth')
 export class AuthController {
-  @Inject(AuthService) private readonly authService!: AuthService
-  constructor() {}
+  @Inject(AuthService) private readonly authService!: AuthService;
 
   @UseGuards(LocalAuthGuard)
   @Post('login')

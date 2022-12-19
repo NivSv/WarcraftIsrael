@@ -6,7 +6,7 @@ export class UserDto {
   @ApiProperty()
   username: string;
   @ApiProperty()
-  fistName: string;
+  firstName: string;
   @ApiProperty()
   lastName: string;
 }
