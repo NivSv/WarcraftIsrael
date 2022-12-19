@@ -8,6 +8,8 @@ import {
   HttpException,
   HttpStatus,
   Inject,
+  ValidationPipe,
+  UsePipes,
 } from '@nestjs/common';
 import { Response } from 'express';
 import { CreateUserDto } from '../users/dtos/create-user.dto';
@@ -38,6 +40,7 @@ export class AuthController {
       .json(userDto);
   }
 
+  @UsePipes(new ValidationPipe())
   @Post('register')
   async register(@Body() createUserDto: CreateUserDto) {
     const usernameTake = await this.authService.checkUserExists(
