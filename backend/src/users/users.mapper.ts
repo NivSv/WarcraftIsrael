@@ -6,7 +6,7 @@ export class UsersMapper {
     const dto: UserDto = {
       id: entity.id,
       username: entity.username,
-      fistName: entity.firstName,
+      firstName: entity.firstName,
       lastName: entity.lastName,
     };
 

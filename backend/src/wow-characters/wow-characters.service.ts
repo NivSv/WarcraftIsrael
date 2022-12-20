@@ -31,6 +31,7 @@ export class WowCharactersService {
         params: {
           namespace: 'profile-eu',
           locale: 'en_EU',
+          access_token: blizardAccessToken,
         },
       },
     );
