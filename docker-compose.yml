@@ -1,8 +1,9 @@
 # Use root/example as user/password credentials
 version: '3.8'
+name: wow_israel
 services:
   db:
-    container_name: wow_israel_mongo
+    container_name: mongo_db
     image: prismagraphql/mongo-single-replica:4.4.3-bionic
     restart: always
     ports:
