@@ -1,7 +1,7 @@
 {
-    "name": "wow-front",
+    "name": "wow-frontend",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/wow-front/src",
+    "sourceRoot": "packages/wow-frontend/src",
     "projectType": "application",
     "targets": {
         "build": {
@@ -9,7 +9,7 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/packages/wow-front"
+                "outputPath": "dist/packages/wow-frontend"
             },
             "configurations": {
                 "development": {},
@@ -20,16 +20,16 @@
             "executor": "@nrwl/vite:dev-server",
             "defaultConfiguration": "development",
             "options": {
-                "buildTarget": "wow-front:build",
-                "proxyConfig": "packages/wow-front/proxy.conf.json"
+                "buildTarget": "wow-frontend:build",
+                "proxyConfig": "packages/wow-frontend/proxy.conf.json"
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "wow-front:build:development",
+                    "buildTarget": "wow-frontend:build:development",
                     "hmr": true
                 },
                 "production": {
-                    "buildTarget": "wow-front:build:production",
+                    "buildTarget": "wow-frontend:build:production",
                     "hmr": false
                 }
             }
@@ -45,7 +45,9 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["packages/wow-front/**/*.{ts,tsx,js,jsx}"]
+                "lintFilePatterns": [
+                    "packages/wow-frontend/**/*.{ts,tsx,js,jsx}"
+                ]
             }
         }
     },
