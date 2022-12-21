@@ -3,7 +3,7 @@
     "ignorePatterns": ["!**/*"],
     "env": {
         "node": true,
-        "jest": true,
+        "jest": true
     },
     "overrides": [
         {
