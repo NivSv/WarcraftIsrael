@@ -1,0 +1,43 @@
+{
+    "extends": "nx/presets/npm.json",
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "affected": {
+        "defaultBase": "master"
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "@nrwl/nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"],
+                "accessToken": "YTJkYjFhMzUtYzQwNS00MjNiLTlmNjYtNDlmZTE1MzM4ZThifHJlYWQtd3JpdGU="
+            }
+        }
+    },
+    "targetDefaults": {
+        "test": {
+            "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+        },
+        "lint": {
+            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+        }
+    },
+    "generators": {
+        "@nrwl/react": {
+            "application": {
+                "style": "scss",
+                "linter": "eslint",
+                "bundler": "vite",
+                "babel": true
+            },
+            "component": {
+                "style": "scss"
+            },
+            "library": {
+                "style": "scss",
+                "linter": "eslint",
+                "unitTestRunner": "vitest"
+            }
+        }
+    },
+    "defaultProject": "wow-front-wow-israel-front"
+}

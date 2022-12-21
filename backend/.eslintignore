@@ -1,6 +1,0 @@
-# Ignore artifacts:
-dist
-coverage
-documentation
-*.log
-*.spec.ts
