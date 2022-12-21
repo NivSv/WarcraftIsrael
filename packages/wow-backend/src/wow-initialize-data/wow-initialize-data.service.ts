@@ -39,7 +39,7 @@ export class WowInitializeDataService {
     public async initializeAccessToken() {
         const client = process.env.BLIZZARD_CLIENT_ID
         const secret = process.env.BLIZZARD_CLIENT_SECRET
-        if(!client || !secret) throw new Error('No client or secret found');
+        if(client == null || secret == null) throw new Error('No client or secret found');
         this.httpService
             .post(
                 'https://oauth.battle.net/token',
