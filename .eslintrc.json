@@ -2,7 +2,7 @@
     "root": true,
     "ignorePatterns": ["**/*"],
     "plugins": ["@nrwl/nx"],
-    "extends": ["prettier"],
+    "extends": ["plugin:nestjs/recommended"],
     "overrides": [
         {
             "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],

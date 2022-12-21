@@ -9,7 +9,8 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/packages/wow-frontend"
+                "outputPath": "dist/packages/wow-frontend",
+                "postcssConfig": "apps/frontend/postcss.config.js"
             },
             "configurations": {
                 "development": {},

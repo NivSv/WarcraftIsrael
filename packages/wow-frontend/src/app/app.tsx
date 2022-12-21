@@ -1,11 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-
-import NxWelcome from './nx-welcome'
+import "../assets/styles.css"
 
 export function App() {
     return (
         <>
-            <div className='flex ml-20'>
+            <div className="flex ml-40">
                 sdf
             </div>
             <div />
