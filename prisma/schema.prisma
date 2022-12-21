@@ -47,7 +47,7 @@ model WowCharacter {
   specId             Int?
   mythicPlusRating   Int?
   user               User?    @relation(fields: [userId], references: [id])
-  userId             String?
+  userId             String? @db.ObjectId
   assets             Assets?
 }
 
