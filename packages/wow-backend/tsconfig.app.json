@@ -1,6 +1,7 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
+        "baseUrl": ".", // This must be specified if "paths" is.
         "outDir": "../../dist/out-tsc",
         "module": "commonjs",
         "types": ["node"],

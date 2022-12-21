@@ -1,6 +1,10 @@
 {
     "extends": "nx/presets/npm.json",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "workspaceLayout": {
+        "appsDir": "apps",
+        "libsDir": "libs"
+    },
     "affected": {
         "defaultBase": "master"
     },

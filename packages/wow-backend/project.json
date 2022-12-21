@@ -12,8 +12,7 @@
                 "compiler": "tsc",
                 "outputPath": "dist/packages/wow-backend",
                 "main": "packages/wow-backend/src/main.ts",
-                "tsConfig": "packages/wow-backend/tsconfig.app.json",
-                "assets": ["packages/wow-backend/src/assets"]
+                "tsConfig": "packages/wow-backend/tsconfig.app.json"
             },
             "configurations": {
                 "production": {
