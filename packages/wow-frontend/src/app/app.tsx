@@ -5,7 +5,9 @@ import NxWelcome from './nx-welcome'
 export function App() {
     return (
         <>
-            <NxWelcome title="wow-front" />
+            <div className='flex ml-20'>
+                sdf
+            </div>
             <div />
         </>
     )
