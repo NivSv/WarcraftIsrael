@@ -1,18 +1,26 @@
 {
-    "extends": ["plugin:@nrwl/nx/react", "../../.eslintrc.json"],
+    "extends": [
+        "plugin:@nrwl/nx/react",
+        "plugin:tailwindcss/recommended",
+        "../../.eslintrc.json"
+    ],
+    "plugins": ["tailwindcss"],
     "ignorePatterns": ["!**/*"],
     "overrides": [
-      {
-        "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
-        "rules": {}
-      },
-      {
-        "files": ["*.ts", "*.tsx"],
-        "rules": {}
-      },
-      {
-        "files": ["*.js", "*.jsx"],
-        "rules": {}
-      }
-    ]
-  }
+        {
+            "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+            "rules": {}
+        },
+        {
+            "files": ["*.ts", "*.tsx"],
+            "rules": {}
+        },
+        {
+            "files": ["*.js", "*.jsx"],
+            "rules": {}
+        }
+    ],
+    "rules": {
+        "tailwindcss/no-custom-classname": "off"
+    }
+}
