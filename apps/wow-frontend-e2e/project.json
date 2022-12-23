@@ -1,13 +1,13 @@
 {
     "name": "wow-frontend-e2e",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/wow-frontend-e2e/src",
+    "sourceRoot": "apps/wow-frontend-e2e/src",
     "projectType": "application",
     "targets": {
         "e2e": {
             "executor": "@nrwl/cypress:cypress",
             "options": {
-                "cypressConfig": "packages/wow-frontend-e2e/cypress.config.ts",
+                "cypressConfig": "apps/wow-frontend-e2e/cypress.config.ts",
                 "devServerTarget": "wow-frontend:serve:development",
                 "testingType": "e2e"
             },
@@ -21,7 +21,7 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["packages/wow-frontend-e2e/**/*.{js,ts}"]
+                "lintFilePatterns": ["apps/wow-frontend-e2e/**/*.{js,ts}"]
             }
         }
     },

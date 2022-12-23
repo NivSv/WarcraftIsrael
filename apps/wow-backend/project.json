@@ -1,7 +1,7 @@
 {
     "name": "wow-backend",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/wow-backend/src",
+    "sourceRoot": "apps/wow-backend/src",
     "projectType": "application",
     "targets": {
         "build": {
@@ -10,9 +10,9 @@
             "options": {
                 "target": "node",
                 "compiler": "tsc",
-                "outputPath": "dist/packages/wow-backend",
-                "main": "packages/wow-backend/src/main.ts",
-                "tsConfig": "packages/wow-backend/tsconfig.app.json"
+                "outputPath": "dist/apps/wow-backend",
+                "main": "apps/wow-backend/src/main.ts",
+                "tsConfig": "apps/wow-backend/tsconfig.app.json"
             },
             "configurations": {
                 "production": {
@@ -21,8 +21,8 @@
                     "inspect": false,
                     "fileReplacements": [
                         {
-                            "replace": "packages/wow-backend/src/environments/environment.ts",
-                            "with": "packages/wow-backend/src/environments/environment.prod.ts"
+                            "replace": "apps/wow-backend/src/environments/environment.ts",
+                            "with": "apps/wow-backend/src/environments/environment.prod.ts"
                         }
                     ]
                 }
@@ -43,14 +43,14 @@
             "executor": "@nrwl/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["packages/wow-backend/**/*.ts"]
+                "lintFilePatterns": ["apps/wow-backend/**/*.ts"]
             }
         },
         "test": {
             "executor": "@nrwl/jest:jest",
             "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
             "options": {
-                "jestConfig": "packages/wow-backend/jest.config.ts",
+                "jestConfig": "apps/wow-backend/jest.config.ts",
                 "passWithNoTests": true
             }
         }

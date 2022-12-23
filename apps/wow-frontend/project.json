@@ -1,7 +1,7 @@
 {
     "name": "wow-frontend",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "packages/wow-frontend/src",
+    "sourceRoot": "apps/wow-frontend/src",
     "projectType": "application",
     "targets": {
         "build": {
@@ -9,7 +9,7 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "dist/packages/wow-frontend",
+                "outputPath": "dist/apps/wow-frontend",
                 "postcssConfig": "apps/frontend/postcss.config.js"
             },
             "configurations": {
@@ -22,7 +22,7 @@
             "defaultConfiguration": "development",
             "options": {
                 "buildTarget": "wow-frontend:build",
-                "proxyConfig": "packages/wow-frontend/proxy.conf.json"
+                "proxyConfig": "apps/wow-frontend/proxy.conf.json"
             },
             "configurations": {
                 "development": {
@@ -47,7 +47,7 @@
             "outputs": ["{options.outputFile}"],
             "options": {
                 "lintFilePatterns": [
-                    "packages/wow-frontend/**/*.{ts,tsx,js,jsx}"
+                    "apps/wow-frontend/**/*.{ts,tsx,js,jsx}"
                 ]
             }
         }
