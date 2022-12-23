@@ -5,7 +5,7 @@ import {
     createRouteConfig,
 } from '@tanstack/react-router'
 import Home from './pages/Home'
-import NavBar from './components/NavBar/NavBar'
+import NavBar from '@features/NavBar'
 
 const rootRoute = createRouteConfig({})
 const indexRoute = rootRoute.createRoute({ path: '/', component: Home })

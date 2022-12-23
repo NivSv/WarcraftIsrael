@@ -12,6 +12,13 @@ module.exports = {
     ],
     theme: {
         extend: {
+            colors: {
+                primary: {
+                    700: "202020",
+                    800: '#1a1a1a',
+                    900: '#121212',
+                }
+            }
         },
     },
     plugins: [],

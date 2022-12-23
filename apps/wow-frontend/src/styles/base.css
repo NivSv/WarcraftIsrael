@@ -1,0 +1,10 @@
+@tailwind components;
+@tailwind base;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply text-white;
+        @apply bg-primary-900;
+    }
+}

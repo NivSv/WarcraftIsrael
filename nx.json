@@ -1,42 +1,60 @@
 {
-    "extends": "nx/presets/npm.json",
     "$schema": "./node_modules/nx/schemas/nx-schema.json",
-    "workspaceLayout": {
-        "appsDir": "apps",
-        "libsDir": "libs"
-    },
+    "npmScope": "wow-israel",
     "affected": {
-        "defaultBase": "master"
+      "defaultBase": "master"
     },
     "tasksRunnerOptions": {
-        "default": {
-            "runner": "@nrwl/nx-cloud",
-            "options": {
-                "cacheableOperations": ["build", "lint", "test", "e2e"],
-                "accessToken": "YTJkYjFhMzUtYzQwNS00MjNiLTlmNjYtNDlmZTE1MzM4ZThifHJlYWQtd3JpdGU="
-            }
+      "default": {
+        "runner": "nx/tasks-runners/default",
+        "options": {
+          "cacheableOperations": ["build", "lint", "test", "e2e"]
         }
+      }
     },
     "targetDefaults": {
-        "test": {
-            "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
-        },
-        "lint": {
-            "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
-        }
+      "build": {
+        "dependsOn": ["^build"],
+        "inputs": ["production", "^production"]
+      },
+      "e2e": {
+        "inputs": ["default", "^production"]
+      },
+      "lint": {
+        "inputs": ["default", "{workspaceRoot}/.eslintrc.json"]
+      },
+      "test": {
+        "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"]
+      }
+    },
+    "namedInputs": {
+      "default": ["{projectRoot}/**/*", "sharedGlobals"],
+      "production": [
+        "default",
+        "!{projectRoot}/.eslintrc.json",
+        "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+        "!{projectRoot}/tsconfig.spec.json",
+        "!{projectRoot}/jest.config.[jt]s"
+      ],
+      "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
     },
     "generators": {
-        "@nrwl/react": {
-            "application": {
-                "linter": "eslint",
-                "bundler": "vite",
-                "babel": true
-            },
-            "library": {
-                "linter": "eslint",
-                "unitTestRunner": "vitest"
-            }
+      "@nrwl/react": {
+        "application": {
+          "style": "css",
+          "linter": "eslint",
+          "bundler": "webpack",
+          "babel": true
+        },
+        "component": {
+          "style": "css"
+        },
+        "library": {
+          "style": "css",
+          "linter": "eslint"
         }
+      }
     },
     "defaultProject": "wow-frontend"
-}
+  }
+  

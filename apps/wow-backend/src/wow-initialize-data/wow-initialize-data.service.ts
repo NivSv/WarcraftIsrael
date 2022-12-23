@@ -14,7 +14,7 @@ export class WowInitializeDataService {
     private readonly wowCharactersService!: WowCharactersService
 
     constructor(@Inject(HttpService) private httpService: HttpService) {
-        this.initializeWowData()
+        // this.initializeWowData()
     }
 
     public raceData = {}
