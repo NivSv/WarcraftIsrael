@@ -11,6 +11,9 @@ module.exports = {
         ...createGlobPatternsForDependencies(__dirname),
     ],
     theme: {
+        fontFamily: {
+            roboto: ['Roboto Condensed', 'sans-serif'],
+        },
         extend: {
             colors: {
                 primary: {

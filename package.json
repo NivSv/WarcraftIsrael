@@ -21,6 +21,9 @@
         "@nestjs/throttler": "^3.1.0",
         "@nrwl/nest": "^15.4.0",
         "@prisma/client": "^4.8.0",
+        "@radix-ui/react-alert-dialog": "^1.0.2",
+        "@radix-ui/react-avatar": "^1.0.1",
+        "@tanstack/react-router": "0.0.1-beta.38",
         "bcrypt": "^5.1.0",
         "class-transformer": "^0.5.1",
         "class-validator": "^0.14.0",
@@ -88,7 +91,6 @@
         "vite": "^4.0.3",
         "vite-plugin-eslint": "^1.8.1",
         "vite-tsconfig-paths": "^4.0.3",
-        "vitest": "^0.26.2",
-        "@tanstack/react-router": "0.0.1-beta.38"
+        "vitest": "^0.26.2"
     }
 }
