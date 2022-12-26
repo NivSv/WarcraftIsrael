@@ -10,7 +10,7 @@ const players = [
 
 export default function index() {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-2">
         {players.map((player) => (
             <RousterCard name={player} />
         ))}
