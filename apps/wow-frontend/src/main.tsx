@@ -5,10 +5,9 @@ import { Outlet, RouterProvider } from '@tanstack/react-router'
 import router from './routes'
 import NavBar from '@features/NavBar'
 import Wrapper from '@features/Wrapper'
-import Login from './pages/Login'
+import { Auth0Provider } from '@auth0/auth0-react'
 
 const App = () => {
-    if (router.matchRoute({ to: '/login' })) return <Login />
     return (
         <div>
             <NavBar />
@@ -22,6 +21,12 @@ const App = () => {
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <StrictMode>
-        <RouterProvider router={router} defaultComponent={App} />
+        <Auth0Provider
+            domain="dev-vplfitg0nn3qzuzm.us.auth0.com"
+            clientId="vpuGJX3iv5FuqftXLrVcZ3klAE9RtKVe"
+            redirectUri={window.location.origin}
+        >
+            <RouterProvider router={router} defaultComponent={App} />
+        </Auth0Provider>
     </StrictMode>
 )

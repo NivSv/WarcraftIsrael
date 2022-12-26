@@ -15,7 +15,7 @@ const navBarLinks: Array<navBarLink> = [
     },
     {
         name: 'רוסטר',
-        path: '/',
+        path: '/roster',
         subLinks: [],
     },
     {
@@ -42,7 +42,7 @@ export default function MainNav() {
             <div className=" container mx-auto flex justify-center gap-9">
                 {navBarLinks.map((navBarLink, index) => (
                     <div key={index} className="group ">
-                        <Link className="text-2xl" to="/">
+                        <Link className="text-2xl" to={navBarLink.path}>
                             <div className="flex items-center gap-1">
                                 <p className="group-hover:text-blue-300">
                                     {navBarLink.name}

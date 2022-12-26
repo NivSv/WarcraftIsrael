@@ -1,7 +1,8 @@
-import { useRouter } from '@tanstack/react-router'
 import * as Avatar from '@radix-ui/react-avatar'
 import { RiCoinFill } from 'react-icons/ri'
 import { json } from './text'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect } from 'react'
 
 interface avatarLink {
     name: string
@@ -9,7 +10,22 @@ interface avatarLink {
 }
 
 export default function UserSection() {
-    const router = useRouter()
+    const {
+        loginWithRedirect,
+        logout,
+        user,
+        isAuthenticated,
+        isLoading,
+        getAccessTokenSilently
+    } = useAuth0()
+
+    useEffect(() => {
+        const a = async () => {
+            const test = await getAccessTokenSilently({ scope: 'read:current_user'})
+            console.log(test)
+        }
+        a()
+    }, [])
 
     const avatarLinks: Array<avatarLink> = [
         {
@@ -22,27 +38,25 @@ export default function UserSection() {
         },
         {
             name: 'התנתק',
-            onClick: () => console.log('התנתק'),
+            onClick: logout,
         },
     ]
 
-    const userLoggedIn = false
-
     return (
         <div className="flex items-center gap-2">
-            {userLoggedIn ? (
+            {isAuthenticated ? (
                 <>
                     <Avatar.Root className="group">
                         <Avatar.Image
                             src={json.assets.avatar}
                             width={50}
-                            className="rounded-full text-gray-50 group-hover:border border-blue-300"
+                            className="rounded-full border-blue-300 text-gray-50 group-hover:border"
                         />
                         <Avatar.Fallback />
-                        <div className="absolute hidden group-hover:block bg-primary-800 z-10 p-2 border ">
+                        <div className="bg-primary-800 absolute z-10 hidden border p-2 group-hover:block ">
                             {avatarLinks.map((avatarLink, index) => (
                                 <div
-                                    className="hover:text-blue-300 cursor-pointer"
+                                    className="cursor-pointer hover:text-blue-300"
                                     key={index}
                                     onClick={avatarLink.onClick}
                                 >
@@ -59,24 +73,12 @@ export default function UserSection() {
                     </div>
                 </>
             ) : (
-                <>
-                    <button
-                        className="border border-transparent rounded inline-block p-2 font-bold space hover:border-stone-700 hover:bg-stone-800"
-                        onClick={() => {
-                            router.history.push('/login')
-                        }}
-                    >
-                        התחבר
-                    </button>
-                    <button
-                        className="border border-blue-400 bg-blue-700 rounded inline-block p-2 font-bold space hover:bg-blue-500"
-                        onClick={() => {
-                            router.history.push('/login')
-                        }}
-                    >
-                        הרשמה
-                    </button>
-                </>
+                <button
+                    className="space inline-block rounded border border-transparent p-2 font-bold hover:border-stone-700 hover:bg-stone-800"
+                    onClick={loginWithRedirect}
+                >
+                    התחבר
+                </button>
             )}
         </div>
     )
