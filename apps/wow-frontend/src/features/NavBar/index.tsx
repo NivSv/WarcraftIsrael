@@ -5,7 +5,7 @@ export default function NavBar() {
     //todo: fix colors
     return (
         <div>
-            <TopNav />
+            <TopNav/>
             <MainNav />
         </div>
     )

@@ -40,7 +40,7 @@ const socialMediaIcons: Array<socialMediaIcon> = [
 export default function TopNav() {
 
     return (
-        <nav className="bg-primary-900 relative">
+        <nav className="bg-primary-900 relative hidden md:block">
             <div className="container mx-auto">
                 <div className="flex items-center justify-between p-2">
                     <UserSection/>

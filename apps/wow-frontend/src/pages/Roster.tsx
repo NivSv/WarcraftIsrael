@@ -3,7 +3,7 @@ import TwitchIframe from '@features/TwitchIframe'
 
 export default function Roster() {
     return (
-        <div className="flex justify-around px-3 py-3">
+        <div className="flex flex-col justify-around gap-5 p-3 md:flex-row md:gap-0">
             <div className="">
                 <div className="flex flex-col">
                     {/* <p className="mb-3 uppercase text-bold self-center text-bold text-4xl">

@@ -38,8 +38,8 @@ const navBarLinks: Array<navBarLink> = [
 
 export default function MainNav() {
     return (
-        <nav className="bg-primary-800 relative">
-            <div className=" container mx-auto flex justify-center gap-9">
+        <nav className="bg-primary-800">
+            <div className=" container mx-auto hidden justify-center gap-9 md:flex">
                 {navBarLinks.map((navBarLink, index) => (
                     <div key={index} className="group ">
                         <Link className="text-2xl" to={navBarLink.path}>
@@ -65,6 +65,10 @@ export default function MainNav() {
                         )}
                     </div>
                 ))}
+            </div>
+            <div className="flex md:hidden relative">
+                
+
             </div>
         </nav>
     )
