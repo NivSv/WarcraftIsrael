@@ -4,8 +4,11 @@
 
 @layer base {
     html {
-        @apply text-white;
-        @apply bg-primary-900;
-        @apply font-roboto;
+        @apply font-primary;
+        @apply text-primary-700;
+    }
+
+    body {
+        direction: rtl;
     }
 }

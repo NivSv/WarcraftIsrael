@@ -1,0 +1,40 @@
+.hamburger {
+    dispaly: block;
+    cursor: pointer;
+    translation: all 0.5s ease-in-out;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    @apply hover:bg-primary-700;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    width: 24px;
+    height: 2px;
+    background: white;
+}
+
+.hamburger-middle {
+    transform: translateY(7px);
+}
+
+.hamburger-bottom {
+    transform: translateY(14px);
+}
+
+.open .hamburger-top {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.open .hamburger-middle {
+    display: none;
+}
+
+.open .hamburger-bottom {
+    transform: translateY(7px) rotate(-45deg);
+}

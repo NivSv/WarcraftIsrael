@@ -6,6 +6,9 @@ importers:
     specifiers:
       '@auth0/auth0-react': ^1.12.0
       '@babel/core': ^7.20.7
+      '@fortawesome/fontawesome-svg-core': ^6.2.1
+      '@fortawesome/pro-light-svg-icons': ^6.2.1
+      '@fortawesome/react-fontawesome': ^0.2.0
       '@nestjs/axios': ^1.0.1
       '@nestjs/common': ^9.2.1
       '@nestjs/config': ^2.2.0
@@ -90,6 +93,9 @@ importers:
       vitest: ^0.26.2
     dependencies:
       '@auth0/auth0-react': 1.12.0_biqbaboplfbrettd7655fr4n2y
+      '@fortawesome/fontawesome-svg-core': 6.2.1
+      '@fortawesome/pro-light-svg-icons': 6.2.1
+      '@fortawesome/react-fontawesome': 0.2.0_z27bm67dtmuyyvss23ckjdrcuy
       '@nestjs/axios': 1.0.1_b4pxbpa7chblgbyake5iz5rdmu
       '@nestjs/common': 9.2.1_welcnyot5bzd5wa2aovbkxpi4i
       '@nestjs/config': 2.2.0_b4pxbpa7chblgbyake5iz5rdmu
@@ -823,6 +829,39 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+
+  /@fortawesome/fontawesome-common-types/6.2.1:
+    resolution: {integrity: sha512-Sz07mnQrTekFWLz5BMjOzHl/+NooTdW8F8kDQxjWwbpOJcnoSg4vUDng8d/WR1wOxM0O+CY9Zw0nR054riNYtQ==, tarball: '@fortawesome/fontawesome-common-types/-/6.2.1/fontawesome-common-types-6.2.1.tgz'}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dev: false
+
+  /@fortawesome/fontawesome-svg-core/6.2.1:
+    resolution: {integrity: sha512-HELwwbCz6C1XEcjzyT1Jugmz2NNklMrSPjZOWMlc+ZsHIVk+XOvOXLGGQtFBwSyqfJDNgRq4xBCwWOaZ/d9DEA==, tarball: '@fortawesome/fontawesome-svg-core/-/6.2.1/fontawesome-svg-core-6.2.1.tgz'}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.2.1
+    dev: false
+
+  /@fortawesome/pro-light-svg-icons/6.2.1:
+    resolution: {integrity: sha512-QTs61d6jAnYhjXuaRUTexv+KQuxzkwG5jjOGBQOGOnOoGZgho6AEU/a5r2Awgv5o+It50C/LduPnboA31P1NUQ==, tarball: '@fortawesome/pro-light-svg-icons/-/6.2.1/pro-light-svg-icons-6.2.1.tgz'}
+    engines: {node: '>=6'}
+    requiresBuild: true
+    dependencies:
+      '@fortawesome/fontawesome-common-types': 6.2.1
+    dev: false
+
+  /@fortawesome/react-fontawesome/0.2.0_z27bm67dtmuyyvss23ckjdrcuy:
+    resolution: {integrity: sha512-uHg75Rb/XORTtVt7OS9WoK8uM276Ufi7gCzshVWkUJbHhh3svsUUeqXerrM96Wm7fRiDzfKRwSoahhMIkGAYHw==, tarball: '@fortawesome/react-fontawesome/-/0.2.0/react-fontawesome-0.2.0.tgz'}
+    peerDependencies:
+      '@fortawesome/fontawesome-svg-core': ~1 || ~6
+      react: '>=16.3'
+    dependencies:
+      '@fortawesome/fontawesome-svg-core': 6.2.1
+      prop-types: 15.8.1
+      react: 18.2.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
@@ -8504,7 +8543,6 @@ packages:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       react-is: 16.13.1
-    dev: true
 
   /proxy-addr/2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
@@ -8609,7 +8647,6 @@ packages:
 
   /react-is/16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
-    dev: true
 
   /react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==}

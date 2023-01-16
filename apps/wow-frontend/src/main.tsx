@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom/client'
 import '@styles/base.css'
 import { Outlet, RouterProvider } from '@tanstack/react-router'
 import router from './routes'
-import NavBar from '@features/NavBar'
 import Wrapper from '@features/Wrapper'
 import { Auth0Provider } from '@auth0/auth0-react'
+import NewNavBar from '@features/NavBarNew'
 
 const App = () => {
     return (
         <div>
-            <NavBar />
+            <NewNavBar />
             <Wrapper>
                 <Outlet />
             </Wrapper>

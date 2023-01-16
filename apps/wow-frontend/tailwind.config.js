@@ -11,17 +11,22 @@ module.exports = {
         ...createGlobPatternsForDependencies(__dirname),
     ],
     theme: {
+        
+        fontColor: {
+            primary: "#FFFFFF",
+        },
         fontFamily: {
-            roboto: ['Roboto Condensed', 'sans-serif'],
+            primary: ['Assistant', 'sans-serif'],
         },
         extend: {
             colors: {
+                callToAction: '#6CFBCE',
                 primary: {
-                    700: "202020",
-                    800: '#1a1a1a',
-                    900: '#121212',
-                }
-            }
+                    700: '#F8F8FF', //Blue + white
+                    800: '#8B8DB9', //Blue + grey
+                    900: '#2B499F', //Dark blue
+                },
+            },
         },
     },
     plugins: [],
